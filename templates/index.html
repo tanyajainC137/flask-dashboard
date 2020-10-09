@@ -1,0 +1,138 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>My Dashboard</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico in the root directory -->
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <div class = 'jumbotron p-3'>
+        <div class='well text-container'>
+            <h1>
+            <center>The Pandemic Explained</center>
+          </h1>
+        </div>
+        </div>
+
+
+    </head>
+    <body bgcolor="#b2b3b8">
+      <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+        <script src="https://d14fo0winaifog.cloudfront.net/plotly-basic.js"></script>
+        <script src="{{ url_for('static', filename='jquery-1.11.1.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='plots.js') }}"></script>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<div class="container">
+  <a class="navbar-brand" href="/">COVID-19</a>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+  <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+    <li class="nav-item active">
+      <a class="nav-link" href="/home"> Home <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="about">About</a>
+    </li>
+    
+  </ul>
+  <form class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</div>
+</div>
+</nav>
+
+        <center> <h4> The coronavirus disease was first identified in December 2019 in Wuhan, China and is believed to have originated from a recombination of coronaviruses in a bat and pangolin. 
+          It has since then spread all across the globe and has <strong> infected {{ basic.conf }} </strong> people and <strong> killed {{ basic.dead }} </strong> people.
+        </h4><br>
+        <!-- Add your site or application content here -->
+        
+
+
+
+        <!-- <div>{{ name }}<br>  style="width:300px;height:150px;" -->
+          
+<figure>
+        <img src= {{ image }} alt='Chart' > 
+        <img src= {{ image1 }} alt='Chart'> <br>
+</figure>
+
+<h2><b>The Death Count Mapped</b></h2>
+</center>
+
+<!-- <div class="col-xs-3">
+  <label> Select the option below </label>
+  <select class="form-control" id ='first_cat'>
+    <option value= 'dead' >Deaths</option>
+      <option value='conf'>Confirmed Cases</option>
+      <option value= 'recover' >Recovered</option>
+  </select>
+</div> -->
+
+<div class="map" id="choropleth">
+  <script type = 'text/javascript'>
+      var graphs = {{ plot.data | safe }};
+      var layouts = {{ plot.layout | safe }};
+      Plotly.plot('choropleth', graphs, layouts);
+  </script>
+</div>
+<br>
+<center><h2>Global Mobility Data</h2><tt>(till June 2020)</tt><br>
+<figure>
+  <img src= '..\static\images\EDA_social2_cell_19_output_0.png' alt='Chart' style="width:598px;height:302px;" > 
+  <img src= '..\static\images\EDA_social2_cell_19_output_1.png' alt='Chart' style="width:598px;height:302px;" > <br>
+  <img src= '..\static\images\EDA_social2_cell_19_output_2.png' alt='Chart' style="width:598px;height:302px;" > 
+  <img src= '..\static\images\EDA_social2_cell_19_output_3.png' alt='Chart' style="width:598px;height:302px;" > <br>
+  <img src= '..\static\images\EDA_social2_cell_19_output_4.png' alt='Chart' style="width:598px;height:302px;" > 
+  <img src= '..\static\images\EDA_social2_cell_19_output_0.png' alt='Chart' style="width:598px;height:302px;" > <br>
+</figure>
+
+<h2>COVID Response by Continent</h2>
+<figure>
+  <img src= '..\static\images\EDA_social1_cell_18_output_1.png' alt='Chart' style="width:405px;height:157px;" > 
+  <img src= '..\static\images\EDA_social1_cell_18_output_2.png' alt='Chart' style="width:405px;height:157px;" > 
+  <img src= '..\static\images\EDA_social1_cell_18_output_3.png' alt='Chart' style="width:405px;height:157px;" > <br>
+  <img src= '..\static\images\EDA_social1_cell_18_output_4.png' alt='Chart' style="width:405px;height:157px;"> 
+  <img src= '..\static\images\EDA_social1_cell_18_output_5.png' alt='Chart' style="width:405px;height:157px;" > 
+  <img src= '..\static\images\EDA_social1_cell_18_output_6.png' alt='Chart' style="width:405px;height:157px;" > <br>
+</figure>
+<h2>COVID Response Measures and Sub-measures</h2>
+<figure>
+  <img src= '..\static\images\EDA_social1_cell_13_output_0.png' alt='Chart' style="width:541px;height:279px;" > 
+  <img src= '..\static\images\EDA_social1_cell_13_output_1.png' alt='Chart' style="width:541px;height:279px;" > <br>
+  <img src= '..\static\images\EDA_social1_cell_13_output_2.png' alt='Chart' style="width:595px;height:279px;" > 
+  <img src= '..\static\images\EDA_social1_cell_13_output_3.png' alt='Chart' style="width:688px;height:279px;" > 
+</figure>
+</center>
+<right><tt>Go to About for Source Code</tt></right>
+
+        
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='https://www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    </body>
+</html>

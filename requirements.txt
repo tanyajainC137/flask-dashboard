@@ -1,0 +1,7 @@
+pandas
+seaborn
+numpy
+flask
+plotly
+PyQt5
+matplotlib

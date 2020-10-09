@@ -1,0 +1,3 @@
+[console_scripts]
+junix = junix.cli:main
+
